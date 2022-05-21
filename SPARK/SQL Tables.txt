@@ -1,0 +1,63 @@
+
+##using default database 
+
+Use anabig114232
+Show tables;
+
+## codes for table creation on MYSQL:-
+
+# table creation for departments:
+
+create table departments(dept_no varchar(255) not null,dept_name varchar(255) not null,primary key(dept_no));
+
+# table creation for dept_emp:
+
+create table dept_emp(emp_no int not null,dept_no varchar(255) not null);
+
+# table creation for dept_mngr:
+
+create table dept_manager(dept_no varchar(255) not null,emp_no int not null);
+
+#ttable creation for employees:
+
+create table employees( emp_no int not null,emp_title_id varchar(255) not null,birth_date varchar(255) not null,first_name varchar(255) 
+not null,last_name varchar(255) not null,sex varchar(255) not null,hire_date varchar(255),no_of_projects int not null,last_performance_ratings varchar(255) not null,left1 boolean,last_date varchar(255),primary key(emp_no));
+
+
+#table creation for salaries table:
+
+create table salaries(emp_no int not null,salary int not null);
+
+
+#create table for titles:
+
+create table titles( title_id varchar(255) not null,title varchar(255),primary key(title_id));
+
+
+
+#loading the file from the  hdfs and the importing to SQL tables using Apache sqoop
+
+for departments table:-
+
+$ sqoop export --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal:3306/anabig114232 --username anabig114232 --password UNKNOWN123 --table departments --export-dir /user/anabig114232/departments1.csv
+
+for dept_emp table:-
+
+$ sqoop export --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal:3306/anabig114232 --username anabig114232 --password UNKNOWN123 --table dept_emp --export-dir /user/anabig114232/dept_emp1.csv
+
+for dept_mngr table:-
+
+$sqoop export --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal:3306/anabig114232 --username anabig114232 --password UNKNOWN123 --table dept_mngr --export-dir /user/anabig114232/dept_mngr1.csv 
+
+for employees table:-
+
+$ sqoop export --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal:3306/anabig114232 --username anabig114232 --password UNKNOWN123 --table employees --export-dir /user/anabig114232/employee1.csv 
+
+for salaries table:-
+
+$ sqoop export --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal:3306/anabig114232 --username anabig114232 --password UNKNOWN123 --table salaries --export-dir /user/anabig114232/salaries1.csv 
+
+for titles table:-
+
+$ sqoop export --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal:3306/anabig114232 --username anabig114232 --password UNKNOWN123 --table titles --export-dir /user/anabig114232/titles1.csv 
+
